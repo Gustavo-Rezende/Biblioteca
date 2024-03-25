@@ -16,9 +16,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Route::middleware('jwt.auth')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
 
-    // Route::get('/livros/{id}', [LivrosController::class, 'show']);
     Route::apiResource('/livros', LivrosController::class);
 
     Route::apiResource('/leitores', LeitoresController::class);
@@ -32,7 +31,5 @@ Route::get('/user', function (Request $request) {
     Route::get('/leitores/{leitorId}/livros-paginas', [PaginasLivroController::class, 'recuperarLivrosPaginasPorLeitor']);
 
     Route::post('/armazenatotallivroslidos/{ano}', [PaginasLivroController::class, 'armazenarTotalLivroslidosPorLeitor']);
-    Route::get('/recuperartotallivroslidos/{leitorID}', [PaginasLivroController::class, 'recuperarTotalLivroslidosPorLeitor']);
 
-
-// });
+});

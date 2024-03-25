@@ -5,34 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
 
-        try {
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'Credenciais inválidas'], 401);
-            }
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'Não foi possível criar o token'], 500);
+        if( !$user || !Hash::check($request->password, $user->password) ) {
+            throw ValidationException::withMessages([
+                'email' => ['email incorreto']
+            ]);
         }
 
-        return response()->json(compact('token'));
+        $user->tokens()->delete();
+        $token = $user->createToken($request->nome)->plainTextToken;
+
+        return response()->json(['token'=>$token]);
     }
 
-    public function logout(Request $request)
-    {
-        try {
-            JWTAuth::invalidate(JWTAuth::getToken());
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'Falha ao invalidar o token'], 500);
-        }
 
-        return response()->json(['message' => 'Logout realizado com sucesso']);
-    }
 }

@@ -21,7 +21,6 @@ class LivrosController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'id_editora' => 'required|integer',
             'nome' => 'required|string|max:255',
@@ -54,8 +53,6 @@ class LivrosController extends Controller
             'isbn.integer' => 'O campo ISBN deve ser um número inteiro.',
             'isbn.max' => 'O campo ISBN não pode exceder 13 caracteres.',
         ]);
-        // $errors = $validator->errors();
-        // dd($request->all());
 
         $livro = Livros::create($request->all());
 

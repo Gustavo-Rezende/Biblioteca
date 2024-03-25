@@ -26,9 +26,4 @@ class PaginasLivroController extends Controller
 
         return response()->json(['message' => 'Totalizadores armazenados com sucesso']);
     }
-
-    public function recuperarTotalLivroslidosPorLeitor($leitorId)
-    {
-        return Redis::hgetall($leitorId);
-    }
 }
