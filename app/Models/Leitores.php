@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Leitores extends Model
 {
@@ -16,4 +17,14 @@ class Leitores extends Model
         'endereco',
         'data_aniversario',
     ];
+
+    public static function buscarLeitoresPorDataAniversario(){
+        $dia = date('d');
+        $mes = date('m');
+        return  DB::table('leitores')
+        ->select('*')
+        ->whereMonth('data_aniversario', '=', $dia)
+        ->whereDay('data_aniversario', '=', $mes)
+        ->get();
+    }
 }

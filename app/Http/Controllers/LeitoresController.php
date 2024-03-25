@@ -20,8 +20,7 @@ class LeitoresController extends Controller
      */
     public function store(Request $request)
     {
-        dd("passou aqui");
-        $validateData = $request->validate([
+        $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|unique:leitores|max:255',
             'telefone' => 'required|string|max:20',
@@ -37,11 +36,10 @@ class LeitoresController extends Controller
             'data_aniversario.required' => 'O campo data de aniversário é obrigatório.',
             'data_aniversario.date' => 'O campo data de aniversário deve ser uma data válida.',
         ]);
-dd($validateData);
-        return response()->json($validateData, 201);
-        // $leitor = Leitores::create($request->all());
 
-        // return response()->json($leitor, 201);
+        $leitor = Leitores::create($request->all());
+
+        return response()->json($leitor, 201);
     }
 
     /**
