@@ -1,0 +1,742 @@
+{
+	"info": {
+		"_postman_id": "6b0891cf-2487-42f7-8ce7-bc4d66acb8bd",
+		"name": "API_Biblioteca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33747152"
+	},
+	"item": [
+		{
+			"name": "{{BaseURL}}/api/editoras",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/editoras",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"editoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/livros",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/leitores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/leitores",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"leitores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livroslidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/livroslidos",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livroslidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/buscaTotalLivrosLidos/2024",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/buscaTotalLivrosLidos/2024",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"buscaTotalLivrosLidos",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/armazenatotallivroslidosredis/2024",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/armazenatotallivroslidosredis/2024",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"armazenatotallivroslidosredis",
+						"2024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/retornatotallivrosredis",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/retornatotallivrosredis",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"retornatotallivrosredis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/editoras",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\":\"editora cadastro post 3\",\n    \"telefone\":\"44447777\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/editoras",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"editoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_editora\": 2,\n    \"nome\": \"teste validacao\",\n    \"genero\": \"acao\",\n    \"autor\": \"Mauricio\",\n    \"ano\": \"2005254\",\n    \"paginas\": \"250\",\n    \"idioma\": \"português\",\n    \"edicao\": \"4\",\n    \"isbn\": 2546321454492\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/livros",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/leitores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\":\"leitor teste aniversario\",\n    \"email\":\"leitoraniversario@hotmail.com\",\n    \"telefone\":\"22223333\",\n    \"endereco\":\"Rua Aparecida, 123, Bairro alvorada\",\n    \"data_aniversario\":\"1990/03/15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/leitores",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"leitores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livroslidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_livro\":3,\n    \"id_leitor\":4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/livroslidos",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livroslidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"gustavo.cordeiro@huggy.com\",\n    \"password\": \"senha123\",\n    \"nome\": \"tokenAPI\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/login",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/editoras",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\":\"editora cadastro post\",\n    \"telefone\":\"44447777\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/editoras/6",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"editoras",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_editora\": 2,\n    \"nome\": \"livro teste edicao\",\n    \"genero\": \"acao\",\n    \"autor\": \"Mauricio\",\n    \"ano\": \"2005\",\n    \"paginas\": \"250\",\n    \"idioma\": \"português\",\n    \"edicao\": \"4\",\n    \"isbn\": 2546321454492\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/livros/6",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livros",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/leitores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"leitor teste aniversario\",\n    \"email\": \"leitoraniversario@hotmail.com\",\n    \"telefone\": \"22223333\",\n    \"endereco\": \"Rua Aparecida, 79, Bairro alvorada\",\n    \"data_aniversario\": \"1990-03-15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/leitores/4",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"leitores",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livroslidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_livro\":1,\n    \"id_leitor\":4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/api/livroslidos/8",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livroslidos",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/editoras",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/editoras/4",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"editoras",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/livros/4",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livros",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/leitores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/leitores/3",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"leitores",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/api/livroslidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ApiKey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/api/livroslidos/6",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"api",
+						"livroslidos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ApiKey",
+			"value": "1|yOJvnP7WX6ep7ysWFOb4rZYyu4VSatVX9lc78pM145d6b1d7"
+		},
+		{
+			"key": "BaseURL",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}
