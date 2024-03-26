@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Livros;
 use App\Models\Leitores;
 use App\Models\LivrosLidos;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class PaginasLivroController extends Controller
 {
 
-    public function armazenarTotalLivroslidosPorLeitor($ano)
+    public function armazenarTotalLivrosLidosPorLeitor($ano)
     {
 
         $resultado = LivrosLidos::obterTotaisLivrosLidosPorAno($ano);
@@ -25,5 +23,26 @@ class PaginasLivroController extends Controller
         }
 
         return response()->json(['message' => 'Totalizadores armazenados com sucesso']);
+    }
+
+    public function retornaTotalLivrosLidosPorLeitor()
+    {
+        $leitores = Leitores::buscarLeitoresPorDataAniversario();
+
+        $dadosQtdlivros = array();
+        $dados = array();
+        foreach ($leitores as $leitor) {
+
+            $id = $leitor->id;
+            $nomeLeitor = $leitor->nome;
+            $dadosQtdlivros =  Redis::hgetall($id);
+            $dados[] = [
+                'Id' => $id,
+                'Nome' => $nomeLeitor,
+                'dados' => $dadosQtdlivros,
+            ];
+        }
+
+        return $dados;
     }
 }

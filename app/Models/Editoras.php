@@ -13,4 +13,9 @@ class Editoras extends Model
         'nome',
         'telefone',
     ];
+
+    public static function editoraExiste($id)
+    {
+        return Editoras::where('id', $id)->exists();
+    }
 }

@@ -37,7 +37,6 @@ class EnviarEmailAniversario extends Command
 
             $dadosCache = Redis::hgetall($id); //retorna quantidade de livros e paginas
 
-
             Mail::to($email)->send(new EmailAniversario($leitor, $dadosCache));
         }
         $this->info('E-mails enviados com sucesso!');

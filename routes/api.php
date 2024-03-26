@@ -27,9 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/livroslidos', LivrosLidosController::class);
     Route::get('/buscaTotalLivrosLidos/{ano}', [LivrosLidosController::class, 'show']);
 
-    Route::post('/leitores/{leitorId}/livros-paginas', [PaginasLivroController::class, 'armazenarLivrosPaginasPorLeitor']);
-    Route::get('/leitores/{leitorId}/livros-paginas', [PaginasLivroController::class, 'recuperarLivrosPaginasPorLeitor']);
-
-    Route::post('/armazenatotallivroslidos/{ano}', [PaginasLivroController::class, 'armazenarTotalLivroslidosPorLeitor']);
+    Route::get('/armazenatotallivroslidosredis/{ano}', [PaginasLivroController::class, 'armazenarTotalLivrosLidosPorLeitor']);
+    Route::get('/retornatotallivrosredis', [PaginasLivroController::class, 'retornaTotalLivrosLidosPorLeitor']);
 
 });

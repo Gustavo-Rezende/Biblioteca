@@ -21,10 +21,9 @@ class Leitores extends Model
     public static function buscarLeitoresPorDataAniversario(){
         $dia = date('d');
         $mes = date('m');
-        return  DB::table('leitores')
-        ->select('*')
-        ->whereMonth('data_aniversario', '=', $dia)
-        ->whereDay('data_aniversario', '=', $mes)
-        ->get();
+        $query = Leitores::whereMonth('data_aniversario', '=', $mes)
+                  ->whereDay('data_aniversario', '=', $dia)
+                  ->get();
+        return $query;
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Editoras;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EditorasController extends Controller
 {
@@ -20,16 +24,23 @@ class EditorasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'telefone' => 'string|max:20',
-        ], [
-            'nome.required' => 'O campo nome é obrigatório.',
-        ]);
 
-        $editora = Editoras::create($request->all());
+        try {
+            $this->validacao($request);
+            Editoras::create($request->all());
+            return response()->json(['message' => 'Editora salva com sucesso'], 201);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->validator->errors()], 422);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Editora não encontrada'], 404);
+        } catch (NotFoundHttpException $e) {
+            return response()->json(['error' => 'Rota não encontrada'], 404);
+        } catch (\Exception $e) {
+            // Log de erro
+            Log::error($e);
 
-        return response()->json($editora, 201);
+            return response()->json(['error' => 'Ocorreu um erro inesperado'], 500);
+        }
     }
 
     /**
@@ -51,9 +62,23 @@ class EditorasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $editora = Editoras::findOrFail($id);
-        $editora->update($request->all());
-        return $editora;
+        try {
+            $this->validacao($request);
+            $editora = Editoras::findOrFail($id);
+            $editora->update($request->all());
+            return $editora;
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->validator->errors()], 422);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Editora não encontrada'], 404);
+        } catch (NotFoundHttpException $e) {
+            return response()->json(['error' => 'Rota não encontrada'], 404);
+        } catch (\Exception $e) {
+            // Log de erro
+            Log::error($e);
+
+            return response()->json(['error' => 'Ocorreu um erro inesperado'], 500);
+        }
     }
 
     /**
@@ -63,6 +88,21 @@ class EditorasController extends Controller
     {
         $editora = Editoras::findOrFail($id);
         $editora->delete();
-        return response()->json([], 204);
+        return response()->json(['success' => 'Registro excluído com sucesso'], 204);
+    }
+
+    /**
+     * Valida campos para cadastro e update.
+     */
+    private function validacao($request)
+    {
+        return $request->validate([
+            'nome' => 'required|string|max:50',
+            'telefone' => 'string|max:20',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.max' => 'O campo nome não pode exceder 50 caracteres.',
+            'telefone.max' => 'O campo telefone não pode exceder 20 caracteres.',
+        ]);
     }
 }
