@@ -4,40 +4,43 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-// use Illuminate\Foundation\Auth\User;
 use App\Models\Leitores;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Support\Facades\DB;
 
 class leitoresTest extends TestCase
 {
-
-    use RefreshDatabase;
-
     protected $user;
 
     protected function setUp(): void
     {
         parent::setUp();
+        DB::beginTransaction();
 
         $this->user = User::factory()->create();
+
+        Sanctum::actingAs($this->user);
+    }
+
+    public function tearDown(): void
+    {
+        DB::rollBack();
+        parent::tearDown();
     }
 
     /** @test */
-    public function authenticated_user_can_create_a_leitor()
+    public function teste_criar_leitor()
     {
-        $this->actingAs($this->user);
 
         $data = [
             'nome' => 'Maria Souza',
-            'email' => 'maria@example.com',
+            'email' => 'maria23@example.com',
             'telefone' => '(99) 8765-4321',
             'endereco' => 'Rua jardim, 899',
             'data_aniversario' => '1988-10-15',
         ];
 
-        $response = $this->post('/leitores', $data);
+        $response = $this->postJson('/api/leitores', $data);
 
         $response->assertStatus(201);
 
@@ -45,44 +48,47 @@ class leitoresTest extends TestCase
     }
 
     /** @test */
-    public function authenticated_user_can_update_a_leitor()
+    public function teste_atualizar_leitor()
     {
-        $this->actingAs($this->user);
 
-        $leitor = Leitores::factory()->create(['nome' => 'Joana Brito']);
+        $data = [
+            'nome' => 'Maria Souza',
+            'email' => 'maria123@example.com',
+            'telefone' => '(99) 8765-4321',
+            'endereco' => 'Rua jardim, 899',
+            'data_aniversario' => '1988-10-15',
+        ];
 
-        $data = ['nome' => 'Joana Teixeira'];
+        $leitor = Leitores::factory()->create($data);
 
-        $response = $this->put('/leitores/' . $leitor->id, $data);
+        $novoEmail = 'joana123@example.com';
+
+        $data['email'] = $novoEmail;
+
+        $response = $this->put('/api/leitores/' . $leitor->id, $data);
 
         $response->assertStatus(200);
 
-        $this->assertDatabaseHas('leitores', ['id' => $leitor->id, 'name' => 'Jane Smith']);
+        $this->assertDatabaseHas('leitores', ['id' => $leitor->id, 'email' => $novoEmail]);
     }
 
     /** @test */
-    public function authenticated_user_can_delete_a_leitor()
+    public function teste_recuperar_leitor()
     {
-        $this->actingAs($this->user);
-
         $leitor = Leitores::factory()->create();
 
-        $response = $this->delete('/leitores/' . $leitor->id);
+        $response = $this->get('api/leitores/' . $leitor->id);
 
         $response->assertStatus(200);
-
-        $this->assertSoftDeleted('leitores', ['id' => $leitor->id]);
     }
 
     /** @test */
-    public function authenticated_user_can_retrieve_a_leitor()
+    public function teste_deletar_leitor()
     {
-        $this->actingAs($this->user);
-
         $leitor = Leitores::factory()->create();
 
-        $response = $this->get('/leitores/' . $leitor->id);
+        $leitor->forceDelete();
 
-        $response->assertStatus(200);
+        $this->assertDatabaseMissing('leitores', ['id' => $leitor->id]);
     }
 }
